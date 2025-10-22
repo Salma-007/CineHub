@@ -2,9 +2,13 @@ package org.cinema.cinehub.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = "org.cinema")
+@Import(JpaConfig.class)
+@ComponentScan(basePackages = "org.cinema.cinehub")
 public class AppConfig {
 
 }

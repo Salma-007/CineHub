@@ -21,27 +21,32 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String titre;
 
-    @Column(nullable = false)
+    @Column
     @Max(value = 2025, message = "L’année de sortie ne peut pas être dans le futur")
     private int relasedYear;
 
-    @Column(nullable = false)
+    @Column
     @Min(value = 1, message = "La durée doit être supérieure à 0")
     private int duration;
 
     @Column
     private String synopsis;
 
-    @Column(nullable = false)
+    @Column
     @DecimalMin(value = "1.0", message = "Le rating doit être au minimum 1")
     @DecimalMax(value = "10.0", message = "Le rating doit être au maximum 10")
     private Double rating;
 
 
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="category_id")
     private Category category;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="director_id")
+    private Director director;
 
 }

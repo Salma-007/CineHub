@@ -12,8 +12,9 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.util.Properties;
+
 @Configuration
-@ComponentScan(basePackages = "org.cinema")
 @EnableJpaRepositories(basePackages = "org.cinema.cinehub.repository")
 @EnableTransactionManagement
 public class JpaConfig {
@@ -30,11 +31,18 @@ public class JpaConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(dataSource());
-        emf.setPackagesToScan("org.cinema.cinehub.model");
-        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        return emf;
+        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+        factory.setDataSource(dataSource());
+        factory.setPackagesToScan("org.cinema.cinehub.model");
+        factory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+
+        Properties props = new Properties();
+        props.put("hibernate.hbm2ddl.auto", "create");
+        props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        props.put("hibernate.show_sql", "true");
+
+        factory.setJpaProperties(props);
+        return factory;
     }
 
     @Bean

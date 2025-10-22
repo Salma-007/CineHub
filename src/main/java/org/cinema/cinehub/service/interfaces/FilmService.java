@@ -1,4 +1,4 @@
-package org.cinema.cinehub.service;
+package org.cinema.cinehub.service.interfaces;
 
 import org.cinema.cinehub.model.Film;
 

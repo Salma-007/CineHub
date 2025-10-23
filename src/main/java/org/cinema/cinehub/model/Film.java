@@ -1,5 +1,7 @@
 package org.cinema.cinehub.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -43,6 +45,7 @@ public class Film {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="category_id")
+    @JsonIgnore
     private Category category;
 
     @ManyToOne(fetch = FetchType.EAGER)

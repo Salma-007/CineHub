@@ -1,11 +1,16 @@
 package org.cinema.cinehub.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity(name = "director")
 public class Director {
     @Id
@@ -28,6 +33,7 @@ public class Director {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "director", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Film> films = new ArrayList<>();
 
 }

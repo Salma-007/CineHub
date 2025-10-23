@@ -12,7 +12,6 @@ public class CategoryServiceImp implements CategoryService {
 
     private final CategoryRepo categoryRepo;
 
-
     public CategoryServiceImp(CategoryRepo categoryRepo) {
         this.categoryRepo = categoryRepo;
     }
@@ -20,5 +19,10 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public Category createCategory(Category cat) {
         return categoryRepo.save(cat);
+    }
+
+    @Override
+    public Category getCategoryByid(Long id) {
+        return categoryRepo.findById(id).orElse(null);
     }
 }

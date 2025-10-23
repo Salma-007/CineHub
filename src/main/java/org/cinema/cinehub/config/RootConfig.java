@@ -6,7 +6,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan(basePackages = "org.cinema.cinehub", // <--- C'EST LE POINT CRITIQUE : Scanne la racine du projet
+@ComponentScan(basePackages = "org.cinema.cinehub",
         excludeFilters = {
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)
         })

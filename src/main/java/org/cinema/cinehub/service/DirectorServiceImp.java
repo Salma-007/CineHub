@@ -31,7 +31,13 @@ public class DirectorServiceImp implements DirectorService {
 
     @Override
     public boolean deleteDirector(Long id) {
-        if (directorRepo.existsById(id)) {
+        Optional<Director> directorOptional = directorRepo.findById(id);
+
+        if (directorOptional.isPresent()) {
+            Director director = directorOptional.get();
+            if (director.getFilms() != null) {
+                return false;
+            }
             try {
                 directorRepo.deleteById(id);
                 return true;

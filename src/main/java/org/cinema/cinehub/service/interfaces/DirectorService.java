@@ -10,4 +10,5 @@ public interface DirectorService {
     boolean deleteDirector(Long id);
     Director updateDirector(Long id, Director director);
     List<Director> getAllDirectors();
+    Optional<Director> getDirectorByName(String lastName);
 }

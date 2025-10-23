@@ -52,6 +52,17 @@ public class DirectorController {
         }
     }
 
+    @GetMapping
+    public ResponseEntity<Director> getDirectorByLastName(String lastName){
+        Optional<Director> director = directorService.getDirectorByName(lastName);
+        if(director.isPresent()){
+            Director direc = director.get();
+            return new ResponseEntity<>(direc, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Director> updateDirector(@PathVariable Long id, @RequestBody Director directorDetails) {
         Director updatedDirector = directorService.updateDirector(id, directorDetails);

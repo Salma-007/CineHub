@@ -65,4 +65,9 @@ public class DirectorServiceImp implements DirectorService {
     public List<Director> getAllDirectors() {
         return directorRepo.findAll();
     }
+
+    @Override
+    public Optional<Director> getDirectorByName(String lastName) {
+        return directorRepo.getDirectorByLastName(lastName);
+    }
 }

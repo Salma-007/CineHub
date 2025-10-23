@@ -32,7 +32,7 @@ public class DirectorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Director> getDirectorById(@PathVariable Long id) {
+    public ResponseEntity<Director> getDirectorById(@PathVariable("id") Long id) {
         Optional<Director> director = directorService.getDirectorByid(id);
         if(director.isPresent()){
             Director direc = director.get();
@@ -52,9 +52,9 @@ public class DirectorController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<Director> getDirectorByLastName(String lastName){
-        Optional<Director> director = directorService.getDirectorByName(lastName);
+    @GetMapping("/search-by-name")
+    public ResponseEntity<Director> getDirectorByLastName(@RequestParam("name") String name){
+        Optional<Director> director = directorService.getDirectorByName(name);
         if(director.isPresent()){
             Director direc = director.get();
             return new ResponseEntity<>(direc, HttpStatus.OK);

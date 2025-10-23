@@ -50,4 +50,14 @@ public class CategoryController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable Long id){
+        boolean deleted = categoryService.deleteCategory(id);
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

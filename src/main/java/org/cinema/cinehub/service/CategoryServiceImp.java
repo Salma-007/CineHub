@@ -6,6 +6,9 @@ import org.cinema.cinehub.repository.CategoryRepo;
 import org.cinema.cinehub.service.interfaces.CategoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class CategoryServiceImp implements CategoryService {
@@ -22,7 +25,40 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public Category getCategoryByid(Long id) {
-        return categoryRepo.findById(id).orElse(null);
+    public Optional<Category> getCategoryByid(Long id) {
+        return categoryRepo.findById(id);
+    }
+
+    @Override
+    public boolean deleteCategory(Long id) {
+        if(categoryRepo.existsById(id)){
+            try{
+                categoryRepo.deleteById(id);
+                return true;
+            } catch (Exception e){
+                return false;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Category updateCategory(Long id, Category categoryDetails) {
+        Optional<Category> existingCategoryOptional = categoryRepo.findById(id);
+
+        if (existingCategoryOptional.isPresent()) {
+            Category existingCategory = existingCategoryOptional.get();
+
+            existingCategory.setName(categoryDetails.getName());
+            existingCategory.setDescription(categoryDetails.getDescription());
+            return categoryRepo.save(existingCategory);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryRepo.findAll();
     }
 }

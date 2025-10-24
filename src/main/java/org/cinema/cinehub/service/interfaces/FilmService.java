@@ -10,6 +10,7 @@ public interface FilmService {
     public Film createFilm(Film film);
     public Film getFilm(Long id);
     public Optional<Film> getFilmByTitre(String titre);
+    public Optional<Film> getFilmById(Long id);
     boolean deleteFilm(Long id);
     FilmCreateDTO updateFilm(Long id, FilmCreateDTO filmDTO);
     public List<FilmCreateDTO> getAllFilms();

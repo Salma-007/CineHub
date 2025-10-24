@@ -51,6 +51,11 @@ public class FilmServiceImp implements FilmService {
     }
 
     @Override
+    public Optional<Film> getFilmById(Long id) {
+        return filmRepo.getFilmById(id);
+    }
+
+    @Override
     public boolean deleteFilm(Long id) {
         if (filmRepo.existsById(id)) {
             try {

@@ -14,4 +14,5 @@ public interface FilmService {
     FilmCreateDTO updateFilm(Long id, FilmCreateDTO filmDTO);
     public List<FilmCreateDTO> getAllFilms();
     public Film createFilmFromDTO(FilmCreateDTO filmDTO);
+    List<FilmCreateDTO> getFilmsByYear(int realeasedYear);
 }

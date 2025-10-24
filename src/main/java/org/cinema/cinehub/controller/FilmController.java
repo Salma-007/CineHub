@@ -62,4 +62,14 @@ public class FilmController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/search-by-year")
+    public ResponseEntity<List<FilmCreateDTO>> getFilmsByYear(@RequestParam int year){
+        List<FilmCreateDTO> films = filmService.getFilmsByYear(year);
+        if(!films.isEmpty()){
+            return new ResponseEntity<>(films, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

@@ -95,4 +95,11 @@ public class FilmServiceImp implements FilmService {
         Film film = filmMapper.toEntity(filmDTO, category, director);
         return filmRepo.save(film);
     }
+
+    @Override
+    public List<FilmCreateDTO> getFilmsByYear(int realeasedYear) {
+        return filmRepo.findFilmsByRelasedYear(realeasedYear).stream()
+                .map(filmMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }

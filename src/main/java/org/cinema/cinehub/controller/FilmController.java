@@ -71,4 +71,14 @@ public class FilmController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/filter-by-rating")
+    public ResponseEntity<List<FilmCreateDTO>> filterFilmsByRating(@RequestParam("rating") Double rating){
+        List<FilmCreateDTO> films = filmService.getFilmsGreaterThanRating(rating);
+        if(!films.isEmpty()){
+            return new ResponseEntity<>(films, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

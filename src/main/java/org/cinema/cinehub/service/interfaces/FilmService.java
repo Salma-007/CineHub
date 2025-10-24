@@ -15,4 +15,5 @@ public interface FilmService {
     public List<FilmCreateDTO> getAllFilms();
     public Film createFilmFromDTO(FilmCreateDTO filmDTO);
     List<FilmCreateDTO> getFilmsByYear(int realeasedYear);
+    List<FilmCreateDTO> getFilmsGreaterThanRating(Double rating);
 }

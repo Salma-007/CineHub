@@ -30,6 +30,7 @@ public class CategoryController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
+    // fetch du categorie avec ses films
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable("id") Long id){
         Optional<Category> category = categoryService.getCategoryByid(id);

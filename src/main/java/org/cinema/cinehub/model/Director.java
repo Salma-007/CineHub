@@ -33,7 +33,6 @@ public class Director {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "director", fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<Film> films = new ArrayList<>();
 
 }

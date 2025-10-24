@@ -50,6 +50,7 @@ public class Film {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="director_id")
+    @JsonIgnore
     private Director director;
 
 }

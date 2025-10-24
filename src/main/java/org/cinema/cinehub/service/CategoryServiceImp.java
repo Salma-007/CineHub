@@ -31,11 +31,16 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public boolean deleteCategory(Long id) {
-        if(categoryRepo.existsById(id)){
+        Optional<Category> categoryOptional = categoryRepo.findById(id);
+        if(categoryOptional.isPresent()){
+            Category category = categoryOptional.get();
+            if(category.getFilms() != null){
+                return false;
+            }
             try{
                 categoryRepo.deleteById(id);
                 return true;
-            } catch (Exception e){
+            }catch (Exception e){
                 return false;
             }
         }

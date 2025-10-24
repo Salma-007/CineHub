@@ -32,7 +32,7 @@ public class main {
             System.out.println("category created successfully");
 
         } catch (Exception e) {
-            System.err.println("❌ Erreur: " + e.getMessage());
+            System.err.println("Erreur: " + e.getMessage());
             e.printStackTrace();
         } finally {
             context.close();

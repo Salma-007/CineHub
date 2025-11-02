@@ -68,8 +68,4 @@ public class FilmServiceTest {
         verify(filmRepo, times(1)).save(film);
     }
 
-    @Test
-    void fetchFilmByIdSuccess(){
-
-    }
 }

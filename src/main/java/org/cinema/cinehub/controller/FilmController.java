@@ -81,4 +81,14 @@ public class FilmController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/find-by-category")
+    public ResponseEntity<List<FilmCreateDTO>> filterByCategoryName(@RequestParam("name") String name){
+        List<FilmCreateDTO> films = filmService.getFilmsByCategoryName(name);
+        if(!films.isEmpty()){
+            return new ResponseEntity<>(films, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

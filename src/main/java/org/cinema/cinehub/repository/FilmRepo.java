@@ -13,4 +13,5 @@ public interface FilmRepo extends JpaRepository<Film, Long> {
     Optional<Film> getFilmById(Long id);
     List<Film> findFilmsByRelasedYear(int releasedYear);
     List<Film> findFilmsByRatingGreaterThanEqual(Double rating);
+    List<Film> findFilmsByCategoryName(String categoryName);
 }

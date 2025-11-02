@@ -114,4 +114,13 @@ public class FilmServiceImp implements FilmService {
                 .map(filmMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<FilmCreateDTO> getFilmsByCategoryName(String name) {
+        return filmRepo.findFilmsByCategoryName(name).stream()
+                .map(filmMapper::toDto)
+                .collect((Collectors.toList()));
+    }
+
+
 }

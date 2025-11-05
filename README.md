@@ -35,22 +35,6 @@ Elle permet de gérer les **films**, **réalisateurs** et **catégories** avec u
 
 ---
 
-## 📐 Règles Métier
-
-| Règle | Description |
-|------|-------------|
-Film → réalisateur | 1 film appartient à 1 réalisateur  
-Réalisateur → films | 1 réalisateur peut avoir plusieurs films  
-Film → catégorie | 1 film = 1 catégorie  
-Catégorie → films | 1 catégorie peut avoir plusieurs films  
-Suppression réalisateur | Interdite s'il a des films  
-Suppression catégorie | Interdite si elle contient des films  
-Note film | Entre **0 et 10**  
-Année film | Ne doit pas être dans le futur  
-Durée film | > **0 minutes**
-
----
-
 ## 🏗️ Architecture & Technologies
 
 | Technologie | Rôle |
